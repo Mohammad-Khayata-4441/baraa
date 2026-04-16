@@ -1,26 +1,552 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
+
+/* ─────────────────────────────────────────────
+   THEME TOKENS — Vibrant Life Aesthetic
+   ───────────────────────────────────────────── */
 
 @theme inline {
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.125rem;
+  --radius-2xl: 1.375rem;
+  --radius-3xl: 1.625rem;
+
+  /* Fonts */
+  --font-sans: "Inter", "Helvetica Neue", -apple-system, sans-serif;
+
+  /* Semantic colours */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+
+  /* Brand palette — Vibrant Life */
+  --color-gold: var(--gold);
+  --color-gold-dark: var(--gold-dark);
+  --color-olive: var(--olive);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-vivid: var(--vivid);
+
+  /* Section bg helpers */
+  --color-section-bg: var(--section-bg);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─────────────────────────────────────────
+   PALETTE CONFIGURATION — LIFE COLORS
+   ───────────────────────────────────────── */
+:root {
+  /* ── Backgrounds ── */
+  --background: #FCFCFF;
+  --section-bg: #F0F4FF;
+  --card: #FFFFFF;
+
+  /* ── Text ── */
+  --foreground: #0F172A;
+  --card-foreground: #0F172A;
+  --muted: #E2E8F0;
+  --muted-foreground: #64748B;
+
+  /* ── Vibrant Brand Colors ── */
+  --gold: #F59E0B;
+  --gold-dark: #D97706;
+  --olive: #059669;
+  --accent: #0EA5E9;
+  --accent-foreground: #FFFFFF;
+  --vivid: #8B5CF6;
+
+  /* ── Borders ── */
+  --border: rgba(15, 23, 42, 0.06);
+
+  /* ── Glow & Shadow tokens ── */
+  --glow-accent: 0 0 20px rgba(14, 165, 233, 0.35), 0 0 60px rgba(14, 165, 233, 0.12);
+  --glow-accent-sm: 0 0 10px rgba(14, 165, 233, 0.3), 0 0 30px rgba(14, 165, 233, 0.1);
+  --glow-gold: 0 0 20px rgba(245, 158, 11, 0.35), 0 0 60px rgba(245, 158, 11, 0.12);
+  --glow-gold-sm: 0 0 10px rgba(245, 158, 11, 0.3), 0 0 30px rgba(245, 158, 11, 0.1);
+  --shadow-card: 0 4px 24px -4px rgba(15, 23, 42, 0.07), 0 1px 4px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover: 0 20px 50px -10px rgba(15, 23, 42, 0.15), 0 4px 16px -4px rgba(15, 23, 42, 0.08);
+  --shadow-hero-image: 0 32px 80px -12px rgba(15, 23, 42, 0.2), 0 8px 24px -4px rgba(15, 23, 42, 0.1);
+
+  /* ── Social brand colors ── */
+  --instagram: #E1306C;
+  --facebook: #1877F2;
+  --youtube: #FF0000;
+  --tiktok: #000000;
+  --whatsapp: #25D366;
+  --email-color: #0EA5E9;
+}
+
+/* ─────────────────────────────────────────
+   BASE STYLES & UTILITIES
+   ───────────────────────────────────────── */
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--accent), var(--vivid));
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─────────────────────────────────────────
+   ANIMATIONS
+   ───────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-left {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-in-right {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: var(--glow-accent-sm); opacity: 1; }
+  50% { box-shadow: var(--glow-accent); opacity: 0.85; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.animate-fade-in-left {
+  animation: fade-in-left 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.animate-fade-in-right {
+  animation: fade-in-right 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ─────────────────────────────────────────
+   INTERACTION UTILITIES — FUTURISTIC
+   ───────────────────────────────────────── */
+.hover-lift {
+  box-shadow: var(--shadow-card);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ─────────────────────────────────────────
+   GLASS MORPHISM CARD
+   ───────────────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ─────────────────────────────────────────
+   GRADIENT BORDER UTILITY
+   ───────────────────────────────────────── */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--accent), var(--vivid), var(--gold));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────
+   HERO BADGE — VIBRANT GLOW
+   ───────────────────────────────────────── */
+.gold-badge {
+  box-shadow: 0 2px 16px rgba(14, 165, 233, 0.2);
+}
+
+/* ─────────────────────────────────────────
+   HERO IMAGE — CINEMATIC SHADOW
+   ───────────────────────────────────────── */
+.hero-image {
+  box-shadow: var(--shadow-hero-image);
+}
+
+/* ─────────────────────────────────────────
+   CARDS — AMBIENT DEPTH
+   ───────────────────────────────────────── */
+.card-shadow {
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card-shadow:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ─────────────────────────────────────────
+   IMPACT NUMBER COUNTER — VIBRANT GLOW
+   ───────────────────────────────────────── */
+.stat-value {
+  text-shadow: 0 0 30px rgba(14, 165, 233, 0.2);
+}
+
+/* ─────────────────────────────────────────
+   ACCENT LINE (blockquote / timeline)
+   ───────────────────────────────────────── */
+.gold-line {
+  box-shadow: 2px 0 12px rgba(14, 165, 233, 0.3);
+}
+
+/* ─────────────────────────────────────────
+   SECTION DIVIDERS — GRADIENT GLOW LINE
+   ───────────────────────────────────────── */
+.glow-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--vivid), var(--gold), transparent);
+  border: none;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────
+   TAG / PILL
+   ───────────────────────────────────────── */
+.gold-tag {
+  box-shadow: 0 2px 12px rgba(14, 165, 233, 0.2);
+}
+
+/* ─────────────────────────────────────────
+   SOCIAL PLATFORM CARD — brand glow on hover
+   ───────────────────────────────────────── */
+.social-platform-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+.social-platform-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+.social-platform-card.instagram:hover {
+  border-color: #E1306C;
+  box-shadow: 0 12px 40px -8px rgba(225, 48, 108, 0.25);
+}
+.social-platform-card.facebook:hover {
+  border-color: #1877F2;
+  box-shadow: 0 12px 40px -8px rgba(24, 119, 242, 0.25);
+}
+.social-platform-card.youtube:hover {
+  border-color: #FF0000;
+  box-shadow: 0 12px 40px -8px rgba(255, 0, 0, 0.25);
+}
+.social-platform-card.tiktok:hover {
+  border-color: #00F2EA;
+  box-shadow: 0 12px 40px -8px rgba(0, 242, 234, 0.25);
+}
+.social-platform-card.whatsapp:hover {
+  border-color: #25D366;
+  box-shadow: 0 12px 40px -8px rgba(37, 211, 102, 0.25);
+}
+
+/* ─────────────────────────────────────────
+   SOCIAL ICON STYLES — COLORED
+   ───────────────────────────────────────── */
+.icon-instagram {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.25s ease,
+              color 0.25s ease;
+  color: #E1306C;
+}
+.icon-instagram:hover {
+  filter: drop-shadow(0 0 8px rgba(225, 48, 108, 0.6));
+  transform: translateY(-2px) scale(1.15);
+}
+
+.icon-facebook {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.25s ease,
+              color 0.25s ease;
+  color: #1877F2;
+}
+.icon-facebook:hover {
+  filter: drop-shadow(0 0 8px rgba(24, 119, 242, 0.6));
+  transform: translateY(-2px) scale(1.15);
+}
+
+.icon-youtube {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.25s ease,
+              color 0.25s ease;
+  color: #FF0000;
+}
+.icon-youtube:hover {
+  filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.6));
+  transform: translateY(-2px) scale(1.15);
+}
+
+.icon-tiktok {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.25s ease;
+}
+.icon-tiktok:hover {
+  filter: drop-shadow(0 0 8px rgba(0, 242, 234, 0.6));
+  transform: translateY(-2px) scale(1.15);
+}
+
+.icon-whatsapp {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.25s ease,
+              color 0.25s ease;
+  color: #25D366;
+}
+.icon-whatsapp:hover {
+  filter: drop-shadow(0 0 8px rgba(37, 211, 102, 0.6));
+  transform: translateY(-2px) scale(1.15);
+}
+
+.icon-email {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.25s ease,
+              color 0.25s ease;
+  color: var(--accent);
+}
+.icon-email:hover {
+  filter: drop-shadow(0 0 8px rgba(14, 165, 233, 0.6));
+  transform: translateY(-2px) scale(1.15);
+}
+
+/* ─────────────────────────────────────────
+   SOCIAL LINK BUTTONS (contact section)
+   ───────────────────────────────────────── */
+.social-btn-instagram:hover {
+  border-color: #E1306C !important;
+  color: #E1306C !important;
+  box-shadow: 0 0 0 1px rgba(225, 48, 108, 0.15),
+              0 8px 24px rgba(225, 48, 108, 0.2);
+}
+
+.social-btn-youtube:hover {
+  border-color: #FF0000 !important;
+  color: #FF0000 !important;
+  box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.15),
+              0 8px 24px rgba(255, 0, 0, 0.2);
+}
+
+.social-btn-facebook:hover {
+  border-color: #1877F2 !important;
+  color: #1877F2 !important;
+  box-shadow: 0 0 0 1px rgba(24, 119, 242, 0.15),
+              0 8px 24px rgba(24, 119, 242, 0.2);
+}
+
+.social-btn-tiktok:hover {
+  border-color: #00F2EA !important;
+  color: #000 !important;
+  box-shadow: 0 0 0 1px rgba(0, 242, 234, 0.15),
+              0 8px 24px rgba(0, 242, 234, 0.2);
+}
+
+.social-btn-whatsapp:hover {
+  border-color: #25D366 !important;
+  color: #25D366 !important;
+  box-shadow: 0 0 0 1px rgba(37, 211, 102, 0.15),
+              0 8px 24px rgba(37, 211, 102, 0.2);
+}
+
+/* ─────────────────────────────────────────
+   PRIMARY CTA BUTTON — GRADIENT GLOW
+   ───────────────────────────────────────── */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--vivid));
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+  transition: box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-primary:hover {
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.35), 0 0 0 1px rgba(14, 165, 233, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ─────────────────────────────────────────
+   TIMELINE DOT — PULSE GLOW
+   ───────────────────────────────────────── */
+.timeline-dot {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────
+   AWARD CARD — VIBRANT AMBIENT
+   ───────────────────────────────────────── */
+.award-gold-card {
+  box-shadow: 0 4px 24px rgba(245, 158, 11, 0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+}
+.award-gold-card:hover {
+  box-shadow: 0 8px 32px rgba(245, 158, 11, 0.22), inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+/* ─────────────────────────────────────────
+   FEATURED WORK CARD VIDEO OVERLAY
+   ───────────────────────────────────────── */
+.play-icon-hover {
+  transition: color 0.25s ease, filter 0.25s ease, transform 0.25s ease;
+}
+.play-icon-hover:hover {
+  color: var(--accent) !important;
+  filter: drop-shadow(0 0 8px rgba(14, 165, 233, 0.6));
+  transform: scale(1.15);
+}
+
+/* ─────────────────────────────────────────
+   QUOTE ICON — WARM GLOW
+   ───────────────────────────────────────── */
+.quote-icon-glow {
+  filter: drop-shadow(0 0 20px rgba(14, 165, 233, 0.3));
+}
+
+/* ─────────────────────────────────────────
+   CONTACT ICON BUBBLE — HOVER GLOW
+   ───────────────────────────────────────── */
+.contact-icon-bubble {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-icon-bubble-wrap:hover .contact-icon-bubble {
+  background-color: rgba(14, 165, 233, 0.1) !important;
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+}
+
+/* ─────────────────────────────────────────
+   HERO BACKGROUND — VIBRANT RADIAL
+   ───────────────────────────────────────── */
+.hero-bg-glow {
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(14, 165, 233, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 10% 70%, rgba(139, 92, 246, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 30% at 50% 90%, rgba(245, 158, 11, 0.04) 0%, transparent 50%);
+}
+
+/* ─────────────────────────────────────────
+   SECTION BG — SUBTLE MODERN TEXTURE
+   ───────────────────────────────────────── */
+.section-texture {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+}
+
+/* ─────────────────────────────────────────
+   PERSONAL MESSAGE SECTION — DARK BG GLOW
+   ───────────────────────────────────────── */
+.message-section-glow {
+  background:
+    radial-gradient(ellipse 50% 60% at 50% 50%, rgba(14, 165, 233, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 40% at 20% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+}
+
+/* ─────────────────────────────────────────
+   NUMBER STAT CARDS — FAINT HOVER SHIMMER
+   ───────────────────────────────────────── */
+.stat-card-glow {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.stat-card-glow:hover {
+  box-shadow: 0 0 30px rgba(14, 165, 233, 0.1);
+  transform: translateY(-4px);
+}
+
+/* ─────────────────────────────────────────
+   NAVIGATION — GLASS EFFECT
+   ───────────────────────────────────────── */
+.nav-glass {
+  backdrop-filter: blur(20px) saturate(200%);
+  background: rgba(252, 252, 255, 0.85);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* ─────────────────────────────────────────
+   SOCIAL ICON IMAGE STYLING
+   ───────────────────────────────────────── */
+.social-icon-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.3s ease;
+}
+.social-icon-img:hover {
+  transform: scale(1.2);
+}
+
+.social-icon-img-lg {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.3s ease;
+}
+
+/* ─────────────────────────────────────────
+   GRADIENT TEXT UTILITY
+   ───────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent), var(--vivid));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-warm {
+  background: linear-gradient(135deg, var(--gold), #EF4444, var(--vivid));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
