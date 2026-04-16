@@ -106,7 +106,7 @@ function Hero() {
               Baraa <span className="gradient-text">Malaika.</span>
             </h1>
             <p className="mt-6 text-xl font-medium tracking-tight text-foreground/70 md:text-2xl">
-              Humanitarian Content Creator | Photographer | Video Editor | Media Professional
+              Humanitarian Storyteller | Photographer | Video Editor | Media Professional
             </p>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               I create humanitarian visual content that documents community initiatives and
