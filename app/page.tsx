@@ -147,7 +147,7 @@ function Hero() {
             {/* Location badge */}
             <div className="gold-badge inline-flex items-center rounded-full border border-accent/30 bg-accent/8 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-accent mb-6">
               <span className="mr-2 h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-              Aleppo, Syria
+              Egypt & MENA region
             </div>
 
             <h1 className="text-6xl font-black tracking-tighter text-foreground md:text-7xl lg:text-8xl">
@@ -1260,9 +1260,9 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border bg-section-bg py-12">
+    <footer className="border-t border-border bg-section-bg py-12 relative">
       {/* Glow divider at top */}
-      <div className="glow-divider mb-0" />
+      <div className="glow-divider mb-8 absolute top-0 w-full " />
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between px-6 md:flex-row gap-6">
         <div className="text-center md:text-left">
           <p className="font-bold text-foreground">Baraa Malaika</p>
@@ -1273,7 +1273,7 @@ function Footer() {
         <p className="text-sm font-medium text-muted-foreground">
           &copy; {new Date().getFullYear()} Baraa Malaika. All rights reserved.
         </p>
-        <p className="text-sm font-medium text-muted-foreground">Aleppo, Syria</p>
+        <p className="text-sm font-medium text-muted-foreground">Egypt & MENA region</p>
       </div>
     </footer>
   );
