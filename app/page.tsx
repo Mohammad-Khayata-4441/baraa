@@ -670,7 +670,7 @@ function ImpactSection() {
                   href={item.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-6 inline-flex w-full items-center justify-center rounded-xl border border-border px-4 py-3 text-sm font-bold uppercase tracking-wider text-foreground transition-all hover:border-accent hover:text-accent
+                  className="mt-6 inline-flex w-full items-center justify-center rounded-xl border border-border px-4 py-3 text-sm font-bold uppercase tracking-wider text-foreground transition-all hover:border-accent hover:text-white
                   bg-blue-400 text-white
                   "
                 >
