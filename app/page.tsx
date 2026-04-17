@@ -75,14 +75,62 @@ function Placeholder({ text, className = "" }: { text: string; className?: strin
   );
 }
 
+const portfolioSection = {
+  title: "Featured Portfolio",
+  subtitle:
+    "Selected works across humanitarian storytelling, awareness content, travel documentation, and promotional media.",
+  items: [
+    {
+      title: "Taxi of Goodness",
+      coverImage: "/works/work6.jpg",
+      url: "https://www.instagram.com/baraa_malaika/",
+      shortDescription:
+        "A humanitarian reel series centered around finding struggling taxi drivers, documenting their stories with empathy, and offering direct support.",
+    },
+    {
+      title: "Social Awareness Series",
+      coverImage: "/works/work4.jpg",
+      url: "https://www.instagram.com/reel/DMnnV8ARuKg/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      shortDescription:
+        "A series of awareness-focused videos addressing public responsibility, cleanliness, traffic respect, cooperation, and everyday civic values.",
+    },
+    {
+      title: "Journey Through Egypt",
+      coverImage: "/works/work3.jpg",
+      url: "https://youtube.com/@baraamalaika-954",
+      shortDescription:
+        "A travel storytelling project exploring Egypt through scenic content, vlog-style moments, and humanitarian activities created in collaboration with a charitable organization.",
+    },
+    {
+      title: "On the Road",
+      coverImage: "/works/work2.jpg",
+      url: "https://www.instagram.com/reel/DPzFGb2kcEW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      shortDescription:
+        "A Ramadan humanitarian series focused on supporting vulnerable families through food baskets, iftar support, and direct community outreach.",
+    },
+    {
+      title: "Goodness Continues",
+      coverImage: "/works/work.jpg",
+      url: "https://www.facebook.com/profile.php?id=100002298332862",
+      shortDescription:
+        "A continuation of charitable work beyond Ramadan, emphasizing sustainable giving and year-round humanitarian responsibility.",
+    },
+    {
+      title: "Medical Center Promotional Reels",
+      coverImage: "/works/work5.jpg",
+      url: "https://www.instagram.com/reel/DQb1hgXkRMQ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      shortDescription:
+        "A collection of promotional reels produced for medical centers in Aleppo, including Aleppo LASIK Center, combining professional presentation with engaging visual storytelling.",
+    },
+  ],
+};
+
 // Page Sections
 function Hero() {
   const socialPlatforms = [
     { icon: "/instagram.png", label: "Instagram", count: "162K", href: "https://www.instagram.com/baraa_malaika/", className: "instagram" },
     { icon: "/youtube.png", label: "YouTube", count: "250K", href: "https://youtube.com/@baraamalaika-954", className: "youtube" },
     { icon: "/facebook.png", label: "Facebook", count: "250K", href: "https://www.facebook.com/profile.php?id=100002298332862", className: "facebook" },
-    { icon: "/tik-tok.png", label: "TikTok", count: "New", href: "#", className: "tiktok" },
-    { icon: "/whatsapp.png", label: "WhatsApp", count: "", href: "#contact", className: "whatsapp" },
   ];
 
   return (
@@ -168,13 +216,13 @@ function Hero() {
 
           {/* Right: Image */}
           <div className="lg:col-span-5 relative animate-fade-in-right">
-            <div className="absolute -inset-4 rounded-3xl gradient-border translate-x-4 translate-y-4" />
+            <div className="absolute -inset-4 rounded-3xl gradient-border translate-x-4 " />
             {/* Soft glow halo behind image */}
-            <div className="absolute inset-0 rounded-2xl bg-accent/8 blur-2xl translate-x-2 translate-y-2" />
+            <div className="absolute inset-0 rounded-2xl bg-accent/8 blur-2xl translate-x-2 translate-y-2 " />
             <Image
               src="/hero.jpg"
               alt="Baraa Malaika portrait"
-              className="hero-image aspect-[4/5] w-full rounded-2xl object-cover z-10 relative"
+              className="hero-image aspect-[4/5] w-full rounded-2xl object-cover z-10 relative "
               width={600}
               height={750}
             />
@@ -261,7 +309,7 @@ function ImpactNumbers() {
             <TrendingUp className="h-6 w-6 text-olive" />
           </div>
           <div className="stat-value text-5xl font-black tracking-tighter gradient-text md:text-6xl lg:text-7xl">
-            250M+
+            350M+
           </div>
           <div className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mt-2">
             Total Views in 2024
@@ -407,89 +455,229 @@ function Services() {
   );
 }
 
-function FeaturedWork() {
-  const projects = [
+function RegionalCollaboration() {
+  const partnerTypes = ["NGOs", "Organizations", "Media Platforms"];
+
+  return (
+    <Section id="regional-collaboration" className="bg-section-bg section-texture">
+      <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+        <div className="rounded-[2rem] border border-border bg-card p-8 card-shadow md:p-10">
+          <p className="mb-3 text-sm font-bold uppercase tracking-widest gradient-text">
+            Collaboration
+          </p>
+          <h2 className="max-w-3xl text-4xl font-black tracking-tight text-foreground md:text-5xl">
+            Available for collaboration in Egypt and across the MENA region.
+          </h2>
+          <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+            <p>
+              I help NGOs and campaigns in the region create impactful awareness content that is built for reach, clarity, and real social value.
+            </p>
+            <p>
+              I also help organizations create impactful content that drives awareness and action, turning media production into a practical communication tool.
+            </p>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {partnerTypes.map((type) => (
+              <span
+                key={type}
+                className="rounded-full border border-accent/15 bg-accent/6 px-4 py-2 text-sm font-semibold text-foreground"
+              >
+                {type}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+          <div className="rounded-[1.75rem] border border-border bg-card p-6 card-shadow">
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-accent">
+              Region
+            </p>
+            <p className="mt-3 text-2xl font-black tracking-tight text-foreground">
+              Egypt + MENA
+            </p>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              Open to regional assignments, campaigns, and cross-border collaboration.
+            </p>
+          </div>
+          <div className="rounded-[1.75rem] border border-border bg-card p-6 card-shadow">
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-accent">
+              Focus
+            </p>
+            <p className="mt-3 text-2xl font-black tracking-tight text-foreground">
+              Awareness Content
+            </p>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              Story-driven production for humanitarian, civic, and public-interest messaging.
+            </p>
+          </div>
+          <div className="rounded-[1.75rem] border border-border bg-card p-6 card-shadow">
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-accent">
+              Outcome
+            </p>
+            <p className="mt-3 text-2xl font-black tracking-tight text-foreground">
+              Awareness to Action
+            </p>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              Content designed to inform audiences, strengthen trust, and encourage participation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function FeaturedPortfolio() {
+  return (
+    <Section id="featured-work" className="relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-x-0  h-84  bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.12),transparent_60%)]" />
+      <div className="pointer-events-none absolute right-0 bottom-0 h-80 w-80 rounded-full bg-gold/8 blur-[120px]" />
+
+      <div className="relative">
+        <div className="mb-10 max-w-3xl md:mb-14">
+          <p className="mb-3 text-sm font-bold uppercase tracking-widest gradient-text">
+            Portfolio
+          </p>
+          <div>
+            <SectionTitle>{portfolioSection.title}</SectionTitle>
+            <p className="-mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              {portfolioSection.subtitle}
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {portfolioSection.items.map((item, index) => (
+            <article
+              key={item.title}
+              className="group overflow-hidden rounded-[1.75rem] border border-white/50 bg-card/85 p-3 shadow-[0_18px_50px_-24px_rgba(15,23,42,0.24)] backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1"
+            >
+              <div className="overflow-hidden rounded-[1.35rem] bg-muted">
+                <div className="relative aspect-[4/5]">
+                  <Image
+                    src={item.coverImage}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                </div>
+              </div>
+
+              <div className="px-1 pt-5 pb-2">
+                <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-accent/80">
+                  Work 0{index + 1}
+                </p>
+                <h3 className="mt-3 text-2xl font-black tracking-tight text-foreground">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground md:text-[15px]">
+                  {item.shortDescription}
+                </p>
+                <a
+                  href={item.url ?? "#featured-work"}
+                  target={item.url?.startsWith("http") ? "_blank" : undefined}
+                  rel={item.url?.startsWith("http") ? "noreferrer" : undefined}
+                  className="btn-primary mt-5 inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-white"
+                >
+                  View Work
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function ImpactSection() {
+  const impactItems = [
     {
       category: "Medical Content",
       title: "Medical Awareness Reel",
-      description:
-        "A short-form awareness video designed to deliver an informative message in a visually engaging format.",
-      result: "1.7M Views",
+      views: "1.7M",
       link: "https://www.instagram.com/reel/DQb1hgXkRMQ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      image: "/mdeical-reel.jpg",
+      image: "/works/work5.jpg",
     },
     {
       category: "Awareness Content",
       title: "Awareness Reel",
-      description:
-        "A short video that presents a social message in a clear, engaging, and highly shareable format.",
-      result: "15M Views",
+      views: "15M",
       link: "https://www.instagram.com/reel/DMnnV8ARuKg/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      image: "/awareness-reel.jpg",
+      image: "/works/work4.jpg",
     },
     {
       category: "Charity Content",
       title: "Charity Reel",
-      description:
-        "A humanitarian content example that connects storytelling with action and turns views into support and engagement.",
-      result: "4.5M Views",
+      views: "4.5M",
       link: "https://www.instagram.com/reel/DPzFGb2kcEW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       image: "/charity-reel.jpg",
     },
   ];
 
   return (
-    <Section id="featured-work" className="bg-section-bg section-texture">
-      <SectionTitle subtitle="Portfolio">Featured Work</SectionTitle>
+    <Section id="impact" className="bg-section-bg section-texture">
+      <SectionTitle subtitle="Impact">Digital Impact</SectionTitle>
+
       <p className="mb-12 max-w-3xl text-lg text-muted-foreground">
-        A selection of projects that reflect the diversity of Baraa's work across awareness content,
-        humanitarian storytelling, social impact initiatives, and field media production.
+        Selected reels that achieved strong visibility across awareness, medical, and humanitarian content.
       </p>
 
-      {/* Portrait-optimized grid: 2 cols on md, 1 on sm, 3 on xl */}
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl">
-        {projects.map((project) => (
+        {impactItems.map((item) => (
           <article
-            key={project.title}
-            className="group flex flex-col bg-card rounded-2xl overflow-hidden border border-border hover-lift h-full"
+            key={item.title}
+            className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card hover-lift"
           >
             <div className="relative overflow-hidden">
               <Image
-                src={project.image}
-                alt={project.title}
+                src={item.image}
+                alt={item.title}
                 className="aspect-[9/16] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 width={300}
                 height={533}
               />
-              {/* Overlay gradient on hover */}
-              <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute top-4 left-4 rounded-full bg-background/90 px-3 py-1 text-xs font-bold text-foreground backdrop-blur-sm shadow-md">
-                {project.result}
-              </div>
+
               <div
                 className="absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-bold text-white backdrop-blur-sm"
                 style={{
                   background: "linear-gradient(135deg, var(--accent), var(--vivid))",
-                  boxShadow: "0 2px 12px rgba(14,165,233,0.4)",
                 }}
               >
-                {project.category}
+                {item.category}
               </div>
             </div>
-            <div className="p-6 flex flex-col flex-1">
+
+            <div className="flex flex-1 flex-col p-6">
               <h3 className="text-xl font-bold tracking-tight text-foreground">
-                {project.title}
+                {item.title}
               </h3>
-              <p className="mt-3 flex-1 text-sm text-muted-foreground">{project.description}</p>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                className="play-icon-hover mt-6 inline-flex items-center text-sm font-bold uppercase tracking-wider text-accent transition-colors hover:text-vivid"
-              >
-                Watch Video
-                <PlayCircle className="ml-2 h-5 w-5" />
-              </a>
+
+              <div className="mt-6 flex-1 flex flex-col justify-end">
+                <div className="border-t border-border pt-6">
+                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground">
+                    Views
+                  </p>
+                  <h4 className="mt-2 text-5xl font-black leading-none text-blue-400">
+                    +{item.views}
+                  </h4>
+                </div>
+
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-6 inline-flex w-full items-center justify-center rounded-xl border border-border px-4 py-3 text-sm font-bold uppercase tracking-wider text-foreground transition-all hover:border-accent hover:text-accent
+                  bg-blue-400 text-white
+                  "
+                >
+                  <Image src="/instagram.png" alt="Instagram icon" width={24} height={24} className="mr-2" />
+                  Watch Work
+                </a>
+              </div>
             </div>
           </article>
         ))}
@@ -497,7 +685,6 @@ function FeaturedWork() {
     </Section>
   );
 }
-
 function Initiatives() {
   const otherInitiatives = [
     "Blood Donation Initiative",
@@ -505,6 +692,38 @@ function Initiatives() {
     "Tomorrow Is Better for Children with Cancer",
     "Keep Childhood Safe",
     "Loyalty to Aleppo",
+  ];
+  const initiativeGallery = [
+    {
+      title: "Blood Donation Initiative",
+      image: "/blood-donner.jpg",
+      className: "row-span-1",
+    },
+    {
+      title: "Blood Donation Support",
+      image: "/blood-donner-2.jpg",
+      className: "row-span-1",
+    },
+    {
+      title: "Children With Cancer Initiative",
+      image: "/cancer-childs.png",
+      className: "sm:col-span-2",
+    },
+    {
+      title: "Community Field Coverage",
+      image: "/post1.jpg",
+      className: "row-span-1",
+    },
+    {
+      title: "Volunteer Storytelling",
+      image: "/post2.jpg",
+      className: "row-span-1",
+    },
+    {
+      title: "For Aleppo",
+      image: "/for-aleppo.jpg",
+      className: "sm:col-span-2",
+    },
   ];
 
   return (
@@ -585,40 +804,33 @@ function Initiatives() {
           </div>
 
           {/* Initiative images grid */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="rounded-2xl overflow-hidden border border-border shadow-md hover:shadow-lg transition-shadow group">
-              <div className="relative aspect-[3/4] overflow-hidden">
-                <Image
-                  src="/initiative1.jpg"
-                  alt="Initiative visual"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  width={250}
-                  height={333}
-                />
+          <div className="grid grid-cols-2 gap-4 sm:gap-5">
+            {initiativeGallery.map((item) => (
+              <div
+                key={item.title}
+                className={`group overflow-hidden rounded-2xl border border-border bg-card p-2 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${item.className}`}
+              >
+                <div className="overflow-hidden rounded-[1.1rem]">
+                  <div className={`relative ${item.className?.includes("col-span-2") ? "aspect-[16/10]" : "aspect-[3/4]"}`}>
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      width={600}
+                      height={800}
+                    />
+                  </div>
+                </div>
+                <div className="px-2 pb-2 pt-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent/80">
+                    Initiative
+                  </p>
+                  <h4 className="mt-2 text-base font-bold leading-snug text-foreground">
+                    {item.title}
+                  </h4>
+                </div>
               </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-border shadow-md hover:shadow-lg transition-shadow group">
-              <div className="relative aspect-[3/4] overflow-hidden">
-                <Image
-                  src="/initiative3.jpg"
-                  alt="Initiative visual"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  width={250}
-                  height={333}
-                />
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-border shadow-md hover:shadow-lg transition-shadow group col-span-2">
-              <div className="relative aspect-[16/9] overflow-hidden">
-                <Image
-                  src="/for-aleppo.jpg"
-                  alt="For Aleppo initiative"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  width={600}
-                  height={337}
-                />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -1025,18 +1237,8 @@ function Contact() {
             >
               <img src="/facebook.png" alt="Facebook" className="h-5 w-5" /> Facebook
             </a>
-            <a
-              href="#"
-              className="social-btn-tiktok flex items-center gap-2.5 rounded-full border border-border px-5 py-3 text-sm font-semibold text-foreground transition-all duration-300"
-            >
-              <img src="/tik-tok.png" alt="TikTok" className="h-5 w-5" /> TikTok
-            </a>
-            <a
-              href="#"
-              className="social-btn-whatsapp flex items-center gap-2.5 rounded-full border border-border px-5 py-3 text-sm font-semibold text-foreground transition-all duration-300"
-            >
-              <img src="/whatsapp.png" alt="WhatsApp" className="h-5 w-5" /> WhatsApp
-            </a>
+        
+         
           </div>
         </div>
 
@@ -1093,7 +1295,9 @@ function Index() {
       <ImpactNumbers />
       <Identity />
       <Services />
-      <FeaturedWork />
+      <RegionalCollaboration />
+      <FeaturedPortfolio />
+      <ImpactSection />
       <Initiatives />
       <Collaborations />
       <MediaPresence />
