@@ -83,28 +83,28 @@ const portfolioSection = {
     {
       title: "Taxi of Goodness",
       coverImage: "/works/work6.jpg",
-      url: "https://www.instagram.com/baraa_malaika/",
+      url: "https://www.instagram.com/baraa_malaika/reel/DM_D-o1MBvQ/",
       shortDescription:
         "A humanitarian reel series centered around finding struggling taxi drivers, documenting their stories with empathy, and offering direct support.",
     },
     {
       title: "Social Awareness Series",
       coverImage: "/works/work4.jpg",
-      url: "https://www.instagram.com/reel/DMnnV8ARuKg/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      url: "https://www.instagram.com/baraa_malaika/reel/DMnnV8ARuKg/",
       shortDescription:
         "A series of awareness-focused videos addressing public responsibility, cleanliness, traffic respect, cooperation, and everyday civic values.",
     },
     {
       title: "Journey Through Egypt",
       coverImage: "/works/work3.jpg",
-      url: "https://youtube.com/@baraamalaika-954",
+      url: "https://www.instagram.com/baraa_malaika/reel/DWbht8zEQ2Q/",
       shortDescription:
         "A travel storytelling project exploring Egypt through scenic content, vlog-style moments, and humanitarian activities created in collaboration with a charitable organization.",
     },
     {
       title: "On the Road",
-      coverImage: "/works/work2.jpg",
-      url: "https://www.instagram.com/reel/DPzFGb2kcEW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      coverImage: "/works/work8.png",
+      url: "https://www.instagram.com/baraa_malaika/reel/DPzFGb2kcEW/",
       shortDescription:
         "A Ramadan humanitarian series focused on supporting vulnerable families through food baskets, iftar support, and direct community outreach.",
     },
@@ -118,7 +118,7 @@ const portfolioSection = {
     {
       title: "Medical Center Promotional Reels",
       coverImage: "/works/work5.jpg",
-      url: "https://www.instagram.com/reel/DQb1hgXkRMQ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      url: "https://www.instagram.com/baraa_malaika/reel/DQb1hgXkRMQ/",
       shortDescription:
         "A collection of promotional reels produced for medical centers in Aleppo, including Aleppo LASIK Center, combining professional presentation with engaging visual storytelling.",
     },
