@@ -75,6 +75,68 @@ function Placeholder({ text, className = "" }: { text: string; className?: strin
   );
 }
 
+function Navbar() {
+  const navItems = [
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Portfolio", href: "#featured-work" },
+    { label: "Initiatives", href: "#initiatives" },
+    { label: "Contact", href: "#contact" },
+  ];
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6">
+      <div className="nav-glass mx-auto max-w-6xl rounded-full border border-white/55 px-3 py-3 md:px-5">
+        <div className="flex items-center justify-between gap-3">
+          <a
+            href="#"
+            className="shrink-0 text-xl font-black tracking-tight text-foreground md:text-2xl"
+          >
+            Baraa
+          </a>
+
+          <nav className="hidden min-w-0 flex-1 justify-center md:flex">
+            <div className="flex items-center gap-1 rounded-full bg-white/45 px-2 py-1">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="rounded-full px-4 py-2 text-sm font-medium text-foreground/75 transition-colors hover:bg-white/80 hover:text-foreground"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </nav>
+
+          <a
+            href="mailto:baraama993@gmail.com"
+            className="btn-primary inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white md:px-5"
+          >
+            <Mail className="h-4 w-4" />
+            <span className="hidden sm:inline">Email Contact</span>
+            <span className="sm:hidden">Email</span>
+          </a>
+        </div>
+
+        <nav className="mt-3 overflow-x-auto md:hidden">
+          <div className="flex min-w-max items-center gap-2 pb-1">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="rounded-full border border-border bg-white/60 px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:border-accent/20 hover:bg-white hover:text-foreground"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </nav>
+      </div>
+    </header>
+  );
+}
+
 const portfolioSection = {
   title: "Featured Portfolio",
   subtitle:
@@ -134,7 +196,7 @@ function Hero() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-background hero-bg-glow px-6 pt-12 pb-20 md:pt-12 md:pb-32">
+    <section className="relative overflow-hidden bg-background hero-bg-glow px-6 pt-32 pb-20 md:pt-36 md:pb-32">
       {/* Atmospheric blobs — vibrant */}
       <div className="pointer-events-none absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full bg-accent/6 blur-[130px]" />
       <div className="pointer-events-none absolute bottom-0 -left-20 h-[400px] w-[400px] rounded-full bg-vivid/5 blur-[100px]" />
@@ -1290,6 +1352,7 @@ function QuoteIcon(props: React.SVGProps<SVGSVGElement>) {
 function Index() {
   return (
     <div className="min-h-screen bg-background font-sans selection:bg-accent/20 selection:text-foreground">
+      <Navbar />
       <Hero />
       <About />
       <ImpactNumbers />
