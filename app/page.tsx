@@ -1046,13 +1046,20 @@ function MediaPresence() {
               Other Platforms Mentioned:
             </p>
             <div className="flex gap-3 flex-wrap">
-              {["Lana TV", "Roya TV", "Arab & Regional Outlets"].map((platform) => (
-                <span
-                  key={platform}
-                  className="bg-muted px-4 py-2 rounded-lg text-sm transition-all hover:bg-accent/10 hover:text-accent cursor-default"
+              {[
+                { title: "Lana TV", url: "https://www.instagram.com/reel/DP4M_0djFuH/?igsh=MWxrZHRoeGNrdDM3Mw==" },
+                { title: "Roya TV", url: "https://www.instagram.com/reel/DJ6efhHIvJ4/?igsh=d3E3enkzb284NWNq" },
+                { title: "Arab & Regional Outlets", url: "https://www.instagram.com/reel/DFV_B65MjJF/?igsh=a3F2MDlncmRud201" }
+              ].map((reel) => (
+                <a
+                  key={reel.title}
+                  href={reel.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-muted px-4 py-2 rounded-lg text-sm transition-all hover:bg-accent/10 hover:text-accent"
                 >
-                  {platform}
-                </span>
+                  {reel.title}
+                </a>
               ))}
             </div>
           </div>
