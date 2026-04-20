@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import {
-   Mail,
+  Mail,
   Phone,
   ArrowRight,
   ExternalLink,
@@ -19,9 +19,10 @@ import {
   TrendingUp,
   Sparkles,
   Download,
+  Star,
 } from "lucide-react";
 
- 
+
 
 // Shared UI Components
 function Section({
@@ -84,6 +85,12 @@ function Navbar() {
     { label: "Contact", href: "#contact" },
   ];
 
+  const socialLinks = [
+    { icon: "/instagram.png", label: "Instagram", href: "https://www.instagram.com/baraa_malaika/", style: { filter: "drop-shadow(0 0 4px rgba(225,48,108,0.6))" } },
+    { icon: "/youtube.png", label: "YouTube", href: "https://youtube.com/@baraamalaika-954", style: { filter: "drop-shadow(0 0 4px rgba(255,0,0,0.6))" } },
+    { icon: "/facebook.png", label: "Facebook", href: "https://www.facebook.com/profile.php?id=100002298332862", style: { filter: "drop-shadow(0 0 4px rgba(24,119,242,0.6))" } },
+  ];
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6">
       <div className="nav-glass mx-auto max-w-6xl rounded-full border border-white/55 px-3 py-3 md:px-5">
@@ -95,6 +102,7 @@ function Navbar() {
             Baraa
           </a>
 
+          {/* Desktop nav */}
           <nav className="hidden min-w-0 flex-1 justify-center md:flex">
             <div className="flex items-center gap-1 rounded-full bg-white/45 px-2 py-1">
               {navItems.map((item) => (
@@ -109,6 +117,22 @@ function Navbar() {
             </div>
           </nav>
 
+          {/* Mobile social icons */}
+          <div className="flex items-center gap-2 md:hidden">
+            {socialLinks.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={s.label}
+                className="flex items-center justify-center rounded-full bg-white/60 p-2 transition-colors hover:bg-white/90"
+              >
+                <img src={s.icon} alt={s.label} width={22} height={22} style={s.style} />
+              </a>
+            ))}
+          </div>
+
           <a
             href="mailto:baraama993@gmail.com"
             className="btn-primary inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white md:px-5"
@@ -118,20 +142,6 @@ function Navbar() {
             <span className="sm:hidden">Email</span>
           </a>
         </div>
-
-        <nav className="mt-3 overflow-x-auto md:hidden">
-          <div className="flex min-w-max items-center gap-2 pb-1">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="rounded-full border border-border bg-white/60 px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:border-accent/20 hover:bg-white hover:text-foreground"
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </nav>
       </div>
     </header>
   );
@@ -232,20 +242,14 @@ function Hero() {
               >
                 View My Work
               </a>
-              <button
-                onClick={() => {
-                  const link = document.createElement('a');
-                  link.href = '/baraa-malaika-portfolio.pdf';
-                  link.download = 'Baraa-Malaika-Portfolio.pdf';
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }}
-                className="rounded-full border border-border px-8 py-4 text-sm font-semibold text-foreground transition-all hover:border-accent/30 hover:bg-accent/5 hover:shadow-md flex items-center gap-2"
+
+              <a
+                target="_blank"
+                href="https://docs.google.com/document/d/1w0y7n061RoJt5Gz6qrtVtVSIbWavqpaNOHjdGbxzM08/edit?usp=sharing"
+                className="rounded-full border border-border px-8 py-4 text-sm font-semibold text-foreground transition-all hover:border-accent/30 hover:bg-accent/5 hover:shadow-md"
               >
-                <Download className="h-4 w-4" />
-                Download PDF
-              </button>
+                Resume
+              </a>
               <a
                 href="#contact"
                 className="rounded-full border border-border px-8 py-4 text-sm font-semibold text-foreground transition-all hover:border-accent/30 hover:bg-accent/5 hover:shadow-md"
@@ -1306,8 +1310,8 @@ function Contact() {
             >
               <img src="/facebook.png" alt="Facebook" className="h-5 w-5" /> Facebook
             </a>
-        
-         
+
+
           </div>
         </div>
 
