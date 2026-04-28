@@ -286,7 +286,7 @@ function Hero() {
             {/* Soft glow halo behind image */}
             <div className="absolute inset-0 rounded-2xl bg-accent/8 blur-2xl translate-x-2 translate-y-2 " />
             <Image
-              src="/hero.jpg"
+              src="/pro.png"
               alt="Baraa Malaika portrait"
               className="hero-image aspect-[4/5] w-full rounded-2xl object-cover z-10 relative "
               width={600}
@@ -447,18 +447,7 @@ function Identity() {
           participation, and moving people from passive viewing to meaningful action.
         </p>
       </div>
-      <div className="mt-16 relative">
-        {/* Warm glow beneath image */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-1/3 w-2/3 bg-accent/8 blur-3xl rounded-full" />
-        <Image
-          src="/hero.png"
-          alt="Humanitarian visual storytelling"
-          className="w-full rounded-2xl object-cover object-top relative"
-          width={800}
-          height={320}
-          style={{ boxShadow: "0 24px 60px -10px rgba(15,23,42,0.14)" }}
-        />
-      </div>
+
     </Section>
   );
 }
@@ -1196,6 +1185,9 @@ function TimelineEducationAwards() {
                     Appreciation in Aleppo's blood donation campaign and several social campaigns.
                   </p>
                 </div>
+              </div>
+              <div>
+                <img src='/award1.png' className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
